@@ -1,0 +1,25 @@
+# Effective-dated contract specifications. NEVER hardcode these in code.
+#
+# verified: false  -> reported by secondary sources only (broker blogs).
+#                     Confirm against the NSE circular before any position sizing.
+# A date with no covering entry raises an error (fail closed), it does not guess.
+
+underlyings:
+  NIFTY:
+    lot_sizes:
+      - {effective_from: 1990-01-01, lot_size: 75, verified: false,
+         note: "pre-change value as reported; exact switch date unconfirmed"}
+      - {effective_from: 2026-01-01, lot_size: 65, verified: false,
+         note: "reported as Jan 2026 (one source said Dec 2025)"}
+    has_weekly: true
+    weekly_weekday: TUESDAY        # reported; verify
+    monthly_weekday: TUESDAY       # last weekday of month; reported; verify
+
+  BANKNIFTY:
+    lot_sizes:
+      - {effective_from: 1990-01-01, lot_size: 35, verified: false,
+         note: "pre-change value as reported"}
+      - {effective_from: 2026-01-01, lot_size: 30, verified: false,
+         note: "reported as Jan 2026"}
+    has_weekly: false              # reported: monthly expiry only
+    monthly_weekday: TUESDAY       # reported; verify
